@@ -10,17 +10,22 @@ import {
 } from "@material-ui/core";
 import InfoBox from './InfoBox.js';
 import './App.css';
-import Map from './Map.js';
+import Map from './Map';
 import Tables from './Tables.js';
 import { sortData } from './util.js';
 import LineGraph from './LineGraph';
+import "leaflet/dist/leaflet.css";
 
 function App() {
   const[countries, setCountries] = useState([]);
   const [country,setCountry]=useState('worldwide');
   const [countryInfo, setCountryInfo]=useState({});
   const [tableData, setTableData]=useState([]);
+  const [mapCenter, setMapCenter]=
+  useState({lat:3.80746, lng:-40.4796});
+  const [mapZoom, setMapZoom]= useState(3);
 
+  const[mapCountries, setMapCountries]=useState([]);
   useEffect(()=>{
     fetch("https://disease.sh/v3/covid-19/all")
     .then((response)=>response.json())
@@ -49,6 +54,7 @@ function App() {
         }));
         const sortedData=sortData(data);
         setTableData(sortedData);
+        setMapCountries(data);
         setCountries(countries);
       });
     };
@@ -64,6 +70,9 @@ function App() {
     await fetch(url).then((response)=>response.json()).then((data)=>{
       setCountry(countrycode);
       setCountryInfo(data);
+
+      setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+      setMapZoom(5);
     });
   };
   return (
@@ -114,9 +123,11 @@ function App() {
           </Card>
 
         </div>
-
-        {/*Map*/}
-        <Map></Map>
+        <Map
+          countries={mapCountries}
+          center={mapCenter}
+          zoom={mapZoom}
+        />
 
       </div>
 
