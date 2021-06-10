@@ -30,6 +30,6 @@
 }
 
 .info-cases, .info-recovered, .info-deaths, .info-active, .info-critical{
-    font-size: 12px;
-    margin-top: 5px;
+    font-size: 16px;
+    margin-top: 10px;
 }
