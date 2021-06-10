@@ -22,7 +22,7 @@ function App() {
   const [countryInfo, setCountryInfo]=useState({});
   const [tableData, setTableData]=useState([]);
   const [mapCenter, setMapCenter]=
-  useState({lat:3.80746, lng:-40.4796});
+  useState({lat:34.80746, lng:-40.4796});
   const [mapZoom, setMapZoom]= useState(3);
 
   const[mapCountries, setMapCountries]=useState([]);
@@ -72,7 +72,7 @@ function App() {
       setCountryInfo(data);
 
       setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-      setMapZoom(5);
+      setMapZoom(4);
     });
   };
   return (
