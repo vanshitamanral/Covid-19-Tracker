@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import "./InfoBox.css";
 import {Card, CardContent, Typography} from '@material-ui/core'
 
 function infoBox({title,cases,total}) {
     return (
-        <div>
+        <div className="infoBox">
             <Card>
                 <CardContent>
                     <Typography className="InfoBox__title" color="textSecondary">

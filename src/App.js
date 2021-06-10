@@ -113,15 +113,6 @@ function App() {
             total={countryInfo.deaths} 
           />
 
-          <Card>
-            <CardContent>
-              <Typography color="textSecondary">Active Cases</Typography>
-              <h3>{countryInfo.active}</h3>
-              <Typography color="textSecondary">Critical </Typography>
-              <h3>{countryInfo.critical}</h3>
-            </CardContent>
-          </Card>
-
         </div>
         <Map
           countries={mapCountries}
@@ -137,6 +128,14 @@ function App() {
           <Tables countries={tableData}/>
           <h3>Worldwide new Cases</h3>
           <LineGraph/>
+          <Card>
+            <CardContent>
+              <Typography color="textSecondary">Active Cases</Typography>
+              <h3 style={{color:"#cc1034"}}>{countryInfo.active}</h3>
+              <Typography color="textSecondary">Critical </Typography>
+              <h3 style={{color:"#cc1034"}}>{countryInfo.critical}</h3>
+            </CardContent>
+          </Card>
         </CardContent>
       </Card>
     </div>
